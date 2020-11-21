@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Edit</title>
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Edit Show {{ show.id }}</h1>
+        <div id="form">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <form action="/{{ show.id }}/update" method="POST">
+                {% csrf_token %}
+                <label for="Title">Title</label>
+                <input type="text" name="show_title" value="{{ show.title }}"><br>
+                <label for="Network">Network</label>
+                <input type="text" name="network" value="{{ show.network }}">
+                <label for="Release Date">Release Date</label>
+                <input type="date" name="release_date" value="{{ show.release_date|date:'Y-m-d'}}"><br>
+                <label for="Description">Description</label>
+                <textarea name="description" cols="30" rows="10">{{ show.description }}</textarea><br><br>
+                <input type="submit" value="Submit"><br><br>
+            </form>
+            <a href="/{{show.id}}">Go to Show</a>
+        </div>
+    </div>
+</body>
+</html>

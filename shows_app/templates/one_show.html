@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>One Show</title>
+</head>
+<body>
+    <div id="wrapper">
+            <h1>Tv Show {{ show.id }}</h1>
+            <div id="show_info"></div>
+                Title: {{show.title}} <br>
+                Network: {{show.network}} <br>
+                Release Date: {{show.release_date}} <br>
+                Description: {{show.description}} <br>
+            </div>
+            Last Updated: {{show.updated_at}}
+    </div><br><br><br><br>
+    <a href="/">Go Back</a><br>
+    <a href="/{{show.id}}/edit">Edit</a> | <a href="/{{show.id}}/destroy">Delete</a></td>
+</body>
+</html>
